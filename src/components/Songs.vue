@@ -1,7 +1,7 @@
 <template>
     <div class="songs-container d-flex justify-content-center align-items-center">
         <div class="container row">
-            <div v-for="(song, index) in songs" :key="index" class="col-6 col-md-4 col-lg-3">
+            <div v-for="(song, index) in songs" :key="index" class="song-card">
                 <SongCard 
                 :singleSong='song' />
             </div>
@@ -43,8 +43,20 @@ export default {
 
 .songs-container{
     width: 100%;
-    height: calc(100vh - $h-header);
+    min-height: calc(100vh - $h-header);
     background: $bg-dark;
+
+    .song-card{
+        flex-basis: calc(100% / 5 - 10px);
+        margin: 5px;
+        cursor: pointer;
+        transition: 0.3s;
+
+        &:hover{
+            filter: brightness(1.1);
+            transform: scale(1.05);
+        }
+    }
 }
 
 </style>
