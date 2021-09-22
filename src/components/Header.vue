@@ -25,7 +25,7 @@ export default {
 <style scoped lang="scss">
 @import '@/styles/general';
   .header{
-    height: 80px;
+    height: $h-header;
     width: 100%;
     background: $bg-light;
 

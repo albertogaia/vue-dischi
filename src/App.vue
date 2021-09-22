@@ -1,16 +1,19 @@
 <template>
   <div id="app">
     <Header />
+    <Songs />
   </div>
 </template>
 
 <script>
 import Header from './components/Header.vue'
+import Songs from './components/Songs.vue'
 
 export default {
   name: 'App',
   components: {
-    Header
+    Header,
+    Songs
   }
 }
 </script>
