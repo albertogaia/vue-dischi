@@ -1,22 +1,27 @@
 <template>
     <div class="songs-container d-flex justify-content-center align-items-center">
+
         <div class="container row">
             <div v-for="(song, index) in songs" :key="index" class="song-card">
                 <SongCard 
                 :singleSong='song' />
             </div>
         </div>
+
+        <Loader />
     </div>
 </template>
 
 <script>
 import axios from 'axios'
 import SongCard from './SongCard.vue'
+import Loader from './Loader.vue'
 export default {
   name: 'Songs',
 
   components:{
-    SongCard
+    SongCard,
+    Loader,
   },
   data(){
     return{
