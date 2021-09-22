@@ -9,7 +9,6 @@
 <script>
 export default {
   name: 'Header',
-
   data(){
     return{
       logo: 'https://upload.wikimedia.org/wikipedia/commons/7/75/Spotify_icon.png',

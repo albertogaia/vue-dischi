@@ -1,22 +1,39 @@
 <template>
-    <div class="songs-container">
-        <div class="container">
-
+    <div class="songs-container d-flex justify-content-center align-items-center">
+        <div class="container row">
+            <div v-for="(song, index) in songs" :key="index" class="col-6 col-md-4 col-lg-3">
+                <SongCard 
+                :singleSong='song' />
+            </div>
         </div>
     </div>
 </template>
 
 <script>
+import axios from 'axios'
+import SongCard from './SongCard.vue'
 export default {
   name: 'Songs',
 
+  components:{
+    SongCard
+  },
   data(){
     return{
-
+        APIurl: 'https://flynn.boolean.careers/exercises/api/array/music',
+        songs: [],
     }
   },
-  props: {
-  }
+
+  created() {
+      axios
+        .get(this.APIurl)
+        .then(result =>{
+            let arraySongs = result.data.response;
+            this.songs = arraySongs;
+            console.log(this.songs)
+        })
+  },  
 }
 </script>
 
