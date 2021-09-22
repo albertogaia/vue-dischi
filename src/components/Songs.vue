@@ -1,14 +1,12 @@
 <template>
     <div class="songs-container d-flex justify-content-center align-items-center">
-
-        <div class="container row">
+        <div v-if="(!loading)"  class="container row">
             <div v-for="(song, index) in songs" :key="index" class="song-card">
                 <SongCard 
                 :singleSong='song' />
             </div>
         </div>
-
-        <Loader />
+        <Loader v-else/>
     </div>
 </template>
 
@@ -27,17 +25,25 @@ export default {
     return{
         APIurl: 'https://flynn.boolean.careers/exercises/api/array/music',
         songs: [],
+        loading: true
+    }
+  },
+
+  methods: {
+    getSongs(){
+        axios
+            .get(this.APIurl)
+            .then(result =>{
+                let arraySongs = result.data.response;
+                this.songs = arraySongs;
+                console.log(this.songs)
+                setTimeout( () => {this.loading = false}, 3000) 
+            })
     }
   },
 
   created() {
-      axios
-        .get(this.APIurl)
-        .then(result =>{
-            let arraySongs = result.data.response;
-            this.songs = arraySongs;
-            console.log(this.songs)
-        })
+    this.getSongs()
   },  
 }
 </script>

@@ -35,13 +35,31 @@ export default {
     justify-content: center;
     align-items: center;
 
-    svg{
-        color: $fc-primary;
-        width: 100px;
+    .img-loader{
+        animation: loading 1s linear infinite;
+
+        svg{
+            color: $fc-primary;
+            width: 100px;
+        }
+
     }
+
     .text-loader{
         color: $fc-primary;
         font-weight: 700;
     }
+
+    @keyframes loading {
+        0%{
+            transform: rotate(0deg) scale(1);
+        }
+        100%{
+            transform: rotate(360deg) scale(1.1);
+        }
+        
+    }
 }
+
+
 </style>
