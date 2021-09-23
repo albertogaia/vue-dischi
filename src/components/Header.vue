@@ -1,7 +1,12 @@
 <template>
-  <header class="header">
+  <header class="header d-flex align-items-center justify-content-between">
     <div class="img-logo ms-3">
       <img :src="logo" :alt="title">
+    </div>
+    <div class="select me-3">
+      <select name="select" id="">
+        
+      </select>
     </div>
   </header>
 </template>

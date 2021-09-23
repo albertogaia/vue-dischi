@@ -25,7 +25,8 @@ export default {
     return{
         APIurl: 'https://flynn.boolean.careers/exercises/api/array/music',
         songs: [],
-        loading: true
+        loading: true,
+        genresArray: [],
     }
   },
 
@@ -36,14 +37,29 @@ export default {
             .then(result =>{
                 let arraySongs = result.data.response;
                 this.songs = arraySongs;
-                console.log(this.songs)
-                setTimeout( () => {this.loading = false}, 3000) 
+                // console.log(this.songs);
+                this.loading = false
             })
+    },
+    getGenres(){
+      axios
+        .get(this.APIurl)
+        .then(res =>{
+          for(let i = 0; i < this.songs.length; i++){
+            let genre = res.data.response[i].genre;
+            // console.log(genre);
+            if(!this.genresArray.includes(genre)){
+              this.genresArray.push(genre)
+            }
+          }
+          console.log(this.genresArray)
+        })
     }
   },
 
   created() {
     this.getSongs()
+    this.getGenres()
   },  
 }
 </script>
