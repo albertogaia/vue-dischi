@@ -4,7 +4,8 @@
       <img :src="logo" :alt="title">
     </div>
     <div class="select me-3">
-      <select name="select" id="select-genres">
+      <select name="select" id="select-genres" v-model="inputText" @change="$emit('selectedOption', inputText)">
+        <option value="">Tutti i generi</option>
         <option v-for="(genre, index) in arrayGenres" :key="index" :value="genre">{{ genre }}</option>
       </select>
     </div>
@@ -20,14 +21,21 @@ export default {
   data(){
     return{
       logo: 'https://upload.wikimedia.org/wikipedia/commons/7/75/Spotify_icon.png',
-      title: 'Spotify logo'
+      title: 'Spotify logo',
+      inputText: '',
     }
   },
   props: ['arrayGenres'],
-  
+  methods: {
+    
+  },
   mounted() {
     console.log(this.arrayGenres)
   },
+
+  computed: {
+
+  }
 }
 </script>
 

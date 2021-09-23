@@ -1,7 +1,7 @@
 <template>
     <div class="songs-container d-flex justify-content-center align-items-center">
         <div v-if="(!loading)"  class="container row">
-            <div v-for="(song, index) in songs" :key="index" class="song-card">
+            <div v-for="(song, index) in filteredSongList" :key="index" class="song-card">
                 <SongCard 
                 :singleSong='song'/>
             </div>
@@ -16,6 +16,8 @@ import SongCard from './SongCard.vue'
 import Loader from './Loader.vue'
 export default {
   name: 'Songs',
+
+  props: ['userSelection'],
 
   components:{
     SongCard,
@@ -37,7 +39,7 @@ export default {
             .then(result =>{
                 let arraySongs = result.data.response;
                 this.songs = arraySongs;
-                // console.log(this.songs);
+                console.log(this.songs);
                 this.loading = false;
             })
     },
@@ -55,13 +57,30 @@ export default {
           console.log(this.genresArray);
           this.$emit('createdGenres', this.genresArray)
         })
-    }
+    },
   },
 
   created() {
     this.getSongs()
     this.getGenres()
   },  
+
+  computed:{
+    filteredSongList(){
+      if(this.userSelection == ''){
+        return this.songs;
+      }
+      else{
+        let filteredSongs = this.songs.filter(el =>{
+          if(el.genre == this.userSelection){
+            return el;
+          }
+        })
+
+        return filteredSongs;
+      }
+    }
+  }
 }
 </script>
 
