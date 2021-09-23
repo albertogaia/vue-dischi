@@ -3,7 +3,7 @@
         <div v-if="(!loading)"  class="container row">
             <div v-for="(song, index) in songs" :key="index" class="song-card">
                 <SongCard 
-                :singleSong='song' />
+                :singleSong='song'/>
             </div>
         </div>
         <Loader v-else/>
@@ -38,7 +38,7 @@ export default {
                 let arraySongs = result.data.response;
                 this.songs = arraySongs;
                 // console.log(this.songs);
-                this.loading = false
+                this.loading = false;
             })
     },
     getGenres(){
@@ -52,7 +52,8 @@ export default {
               this.genresArray.push(genre)
             }
           }
-          console.log(this.genresArray)
+          console.log(this.genresArray);
+          this.$emit('createdGenres', this.genresArray)
         })
     }
   },

@@ -1,7 +1,11 @@
 <template>
   <div id="app">
-    <Header />
-    <Songs />
+    <Header 
+    :arrayGenres="genresArray"/>
+    <Songs 
+    @createdGenres="getGenres"
+    
+    />
   </div>
 </template>
 
@@ -14,7 +18,24 @@ export default {
   components: {
     Header,
     Songs
-  }
+  },
+  data() {
+    return {
+      selectOption: '',
+      genresArray: [],
+    }
+  },
+  methods: {
+    getGenres(array){
+      this.genresArray = array;
+      console.log(this.genresArray);
+    }
+  },
+  mounted() {
+  },
+  created() {
+    this.getGenres;
+  },
 }
 </script>
 

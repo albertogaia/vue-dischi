@@ -4,8 +4,8 @@
       <img :src="logo" :alt="title">
     </div>
     <div class="select me-3">
-      <select name="select" id="">
-        
+      <select name="select" id="select-genres">
+        <option v-for="(genre, index) in arrayGenres" :key="index" :value="genre">{{ genre }}</option>
       </select>
     </div>
   </header>
@@ -14,14 +14,20 @@
 <script>
 export default {
   name: 'Header',
+
+  components: {
+  },
   data(){
     return{
       logo: 'https://upload.wikimedia.org/wikipedia/commons/7/75/Spotify_icon.png',
       title: 'Spotify logo'
     }
   },
-  props: {
-  }
+  props: ['arrayGenres'],
+  
+  mounted() {
+    console.log(this.arrayGenres)
+  },
 }
 </script>
 
