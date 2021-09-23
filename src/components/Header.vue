@@ -23,6 +23,7 @@ export default {
       logo: 'https://upload.wikimedia.org/wikipedia/commons/7/75/Spotify_icon.png',
       title: 'Spotify logo',
       inputText: '',
+      inputAuthors: '',
     }
   },
   props: ['arrayGenres'],

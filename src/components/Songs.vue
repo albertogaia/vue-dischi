@@ -1,6 +1,7 @@
 <template>
-    <div class="songs-container d-flex justify-content-center align-items-center">
-        <div v-if="(!loading)"  class="container row">
+    <div class="songs-container d-flex flex-column align-items-center">
+        <h1 v-if="(userSelection != '')">Genere: {{userSelection}}</h1>
+        <div v-if="(!loading)"  class="container row d-flex justify-content-center mt-3">
             <div v-for="(song, index) in filteredSongList" :key="index" class="song-card">
                 <SongCard 
                 :singleSong='song'/>
@@ -93,6 +94,9 @@ export default {
     min-height: calc(100vh - $h-header);
     background: $bg-dark;
 
+    h1{
+      color: $fc-primary;
+    }
     .song-card{
         flex-basis: calc(100% / 5 - 10px);
         margin: 5px;

@@ -3,11 +3,13 @@
     <Header 
     :arrayGenres="genresArray"
     @selectedOption="getSelection"
+
     />
 
     <Songs 
     @createdGenres="getGenres"
     :userSelection="userSelection"
+
     />
   </div>
 </template>
@@ -30,7 +32,7 @@ export default {
     }
   },
 
-  props: ['selectedOption'],
+  props: ['selectedOption', 'selectedAuthorOption'],
   methods: {
     getGenres(array){
       this.genresArray = array;
